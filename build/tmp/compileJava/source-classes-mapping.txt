@@ -1,0 +1,10 @@
+joc/Alien.java
+ joc.Alien
+joc/Warrior.java
+ joc.Warrior
+joc/Player.java
+ joc.Player
+joc/Human.java
+ joc.Human
+inici/JocDeRol.java
+ inici.JocDeRol
