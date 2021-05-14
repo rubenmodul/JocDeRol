@@ -2,10 +2,8 @@ package joc;
 
 public class Warrior extends Human{
 
-  public Warrior(){
-    System.out.println("He creat un Warrior!!");
+  public Warrior(String name, int attackPoints, int defensePoints, int life) {
+    super(name, attackPoints, defensePoints, life);
+    System.out.println("He creat un warrior!!");
   }
-
-
-
 }
