@@ -11,9 +11,9 @@ public abstract class Player {
 
   public Player(String name, int attackPoints, int defensePoints, int life) {
     this.name = name;
-    this.attackPoints = attackPoints;
-    this.defensePoints = defensePoints;
-    this.life = life;
+    this.setAttackPoints(attackPoints);
+    this.setDefensePoints(defensePoints);
+    this.setLife(life);
   }
 
   public void attack(Player p){
@@ -44,7 +44,7 @@ public abstract class Player {
     } else {
       System.out.println(this.getName() + " és colpejat amb " + attackPoints + " punts i es defén amb " + this.getDefensePoints() + ". Vides: " + this.getLife() + " - " + (ataqueF) + " = " + vidaF);
     }
-    this.life = vidaF;
+    this.setLife(vidaF);
   }
 
   @Override
@@ -68,4 +68,15 @@ public abstract class Player {
     return life;
   }
 
+  public void setLife(int life) {
+    this.life = life;
+  }
+
+  public void setAttackPoints(int attackPoints) {
+    this.attackPoints = attackPoints;
+  }
+
+  public void setDefensePoints(int defensePoints) {
+    this.defensePoints = defensePoints;
+  }
 }

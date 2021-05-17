@@ -17,15 +17,15 @@ public class JocDeRol {
 
   public static void provaFrase(){
     System.out.println("Human");
-    Human human = new Human("Choumi", 60,40,350);
+    Human human = new Human("Choumi", 6,4,50);
     System.out.println("Alien");
-    Alien alien = new Alien("Predator", 75, 30, 275);
+    Alien alien = new Alien("Predator", 7, 3, 75);
     System.out.println("Warrior");
-    Warrior warrior = new Warrior("Cubanito", 100,20,250);
+    Warrior warrior = new Warrior("Cubanito", 8,2,50);
     System.out.println();
-    System.out.println("BATALLA ENTRE HUMA I ALIEN");
+    System.out.println("BATALLA ENTRE ALIEN I HUMAN");
     System.out.println();
-    human.attack(alien);
+    alien.attack(human);
     System.out.println();
     System.out.println("BATALLA ENTRE WARRIOR I HUMA");
     System.out.println();
