@@ -2,6 +2,8 @@ joc/Alien.java
  joc.Alien
 joc/Warrior.java
  joc.Warrior
+joc/Team.java
+ joc.Team
 joc/Player.java
  joc.Player
 joc/Human.java

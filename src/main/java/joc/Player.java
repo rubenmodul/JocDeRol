@@ -1,5 +1,7 @@
 package joc;
 
+import java.util.ArrayList;
+
 public abstract class Player {
 
   //Atributs
@@ -7,6 +9,7 @@ public abstract class Player {
   private int attackPoints;
   private int defensePoints;
   private int life;
+  private ArrayList<Team> teams;
 
 
   public Player(String name, int attackPoints, int defensePoints, int life) {
@@ -14,6 +17,7 @@ public abstract class Player {
     this.setAttackPoints(attackPoints);
     this.setDefensePoints(defensePoints);
     this.setLife(life);
+    setTeams(new ArrayList<>());
   }
 
   public void attack(Player p){
@@ -47,9 +51,31 @@ public abstract class Player {
     this.setLife(vidaF);
   }
 
+  //Metodos
+  public void afegir(Team t){
+    this.getTeams().add(t);
+    if(!t.players.contains(this)){
+      t.afegir(this);
+    }
+  }
+
+  public void eliminar(Team t){
+    this.getTeams().remove(t);
+    if(t.players.contains(this)){
+      t.eliminar(this);
+    }
+  }
+
+  public boolean equals(Player p) {
+    if (this.name.compareTo(p.name) == 0 && this.attackPoints - p.getAttackPoints() == 0 && this.defensePoints - p.getDefensePoints() == 0 && this.life - p.getLife() == 0){
+      return true;
+    }
+    return false;
+  }
+
   @Override
   public String toString() {
-    return this.name+" PA:"+this.attackPoints+" / PD:"+defensePoints+" / PV:"+life;
+    return this.name+" PA:"+this.attackPoints+" / PD:"+defensePoints+" / PV:"+life+" (pertany a " + this.getTeams().size() + " equips)";
   }
 
   public String getName() {
@@ -78,5 +104,13 @@ public abstract class Player {
 
   public void setDefensePoints(int defensePoints) {
     this.defensePoints = defensePoints;
+  }
+
+  public ArrayList<Team> getTeams() {
+    return teams;
+  }
+
+  public void setTeams(ArrayList<Team> teams) {
+    this.teams = teams;
   }
 }
