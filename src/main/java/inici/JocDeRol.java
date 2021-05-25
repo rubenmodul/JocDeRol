@@ -25,6 +25,11 @@ public class JocDeRol {
     Team los_ardillos = new Team("Los_Ardillos");
     Team barce = new Team("Barce");
 
+    //Creem els items
+    Item espada = new Item("espada", 10, 4);
+    Item escudo = new Item("escudo", 1,10);
+    Item pistola = new Item("pistola", 25, 1);
+
     //Afegim personatges als equips
     barce.afegir(human);
     barce.afegir(alien);
@@ -40,9 +45,15 @@ public class JocDeRol {
     barce.eliminar(human);
 
     //Mostrem els equips que hi han per veure si el remove ha funcionat
-    System.out.println("Mostrem jugadors un vegada eliminat");
+    System.out.println("Mostrem jugadors un vegada eliminats del equip");
     System.out.println(los_ardillos);
     System.out.println(barce);
+
+    //Añadim itmes als personatges
+    human.addItem(espada);
+    alien.addItem(escudo);
+    warrior.addItem(pistola);
+
 
 
     System.out.println();
