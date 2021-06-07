@@ -1,7 +1,15 @@
 package joc;
 
+import io.ExcepcioAutoAtacarse;
+import io.ExcepcioJugadorMort;
+import io.ExcepcioJugadorRepetit;
+import io.ExcepcionLlevarJugador;
+
 import java.util.ArrayList;
 
+/**
+ * Creamos el player
+ */
 public abstract class Player {
 
   //Atributs
@@ -13,6 +21,12 @@ public abstract class Player {
   private ArrayList<Item> items;
 
 
+  /**
+   * @param name
+   * @param attackPoints
+   * @param defensePoints
+   * @param life
+   */
   public Player(String name, int attackPoints, int defensePoints, int life) {
     this.name = name;
     this.setAttackPoints(attackPoints);
@@ -23,7 +37,18 @@ public abstract class Player {
 
   }
 
-  public void attack(Player p){
+  /**
+   * @param p
+   * @throws ExcepcioJugadorMort
+   * @throws ExcepcioAutoAtacarse
+   */
+  public void attack(Player p) throws ExcepcioJugadorMort, ExcepcioAutoAtacarse {
+    if(this.getLife()==0 || p.getLife() == 0){
+      throw new ExcepcioJugadorMort("Esta muerto jeje");
+    }
+    if(this.equals(p)){
+      throw new ExcepcioAutoAtacarse("No se puede atacar a si mismo");
+    }
     System.out.println("--------------- ABANS L'ATAC --------------");
     System.out.println("Atacant: "+this);
     System.out.println("Atacat: "+p);
@@ -46,6 +71,10 @@ public abstract class Player {
     System.out.println("Atacat: "+p);
   }
 
+  /**
+   * La defensa
+   * @param attackPoints
+   */
   protected void hit(int attackPoints){
 
     int defensa = this.getDefensePoints();
@@ -68,7 +97,10 @@ public abstract class Player {
 
   //Metodos
   //Añadir equipos
-  public void afegir(Team t){
+  public void afegir(Team t) throws ExcepcioJugadorRepetit {
+    if(this.teams.contains(t)){
+      throw new ExcepcioJugadorRepetit("El jugador ya existix");
+    }
     this.getTeams().add(t);
     if(!t.players.contains(this)){
       t.afegir(this);
@@ -76,7 +108,10 @@ public abstract class Player {
   }
 
   //Eliminar equipo
-  public void eliminar(Team t){
+  public void eliminar(Team t) throws ExcepcionLlevarJugador {
+    if(!t.players.contains(this)){
+      throw new ExcepcionLlevarJugador("Este jugador no esta en este equip");
+    }
     this.getTeams().remove(t);
     if(t.players.contains(this)){
       t.eliminar(this);
@@ -99,6 +134,14 @@ public abstract class Player {
   //Eliminar items
   public void removeItem(Item i){
     this.items.remove(i);
+  }
+
+
+  public boolean vivo() {
+    if (this.getLife() > 0) {
+      return true;
+    }
+    return false;
   }
   @Override
   public String toString() {

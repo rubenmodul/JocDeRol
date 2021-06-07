@@ -1,12 +1,32 @@
-joc/Alien.java
- joc.Alien
+io/Leer.java
+ io.Leer
+io/ExcepcioJugadorMort.java
+ io.ExcepcioJugadorMort
 joc/Warrior.java
  joc.Warrior
-joc/Team.java
- joc.Team
+joc/Item.java
+ joc.Item
+joc/Alien.java
+ joc.Alien
 joc/Player.java
  joc.Player
+joc/Team.java
+ joc.Team
+io/ExcepcioJugadorRepetit.java
+ io.ExcepcioJugadorRepetit
 joc/Human.java
  joc.Human
+io/ExcepcionLlevarJugador.java
+ io.ExcepcionLlevarJugador
+io/ExcepcioAutoAtacarse.java
+ io.ExcepcioAutoAtacarse
+inici/Utilitats.java
+ inici.Utilitats
+inici/MenuP.java
+ inici.MenuP
 inici/JocDeRol.java
  inici.JocDeRol
+inici/MenuT.java
+ inici.MenuT
+inici/MenuI.java
+ inici.MenuI
